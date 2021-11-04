@@ -33,3 +33,6 @@
   ```commandline
   conda install -c anaconda numpy
   ```
+## 결과물
+![](./bins/image/test.boxplot.png)
+*box plot을 임시로 그린 모습*

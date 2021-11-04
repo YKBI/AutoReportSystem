@@ -19,9 +19,13 @@ class make_plots_1D:
         plt.xticks([]),plt.yticks(fontsize=20)
         plt.ylabel("Amount of %s"%self.cn,fontsize=30),plt.xlabel("%s"%self.cn,fontsize=30)
         plt.savefig("%s/%s.boxplot.png"%(fPath,fname))
+    def dist_plot(self,fname,fPath):
+        plt.hist(self.df[self.cn].tolist())
+        plt.ylabel("Distribution of %s"%self.cn,fontsize=30),plt.xlabel("Amount of %s"%self.cn,fontsize=30)
+        plt.show()
 
 if __name__ == "__main__":
     np.random.seed(1)
     aa = np.random.normal(0,2.0,1000)
     pp = make_plots_1D(aa,"test")
-    pp.box_plot("test","./")
+    pp.dist_plot("test","./image")
