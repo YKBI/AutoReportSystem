@@ -53,13 +53,28 @@ class make_plots_1D:
 class make_plots_multi:
     def __init__(self,a,cname):
         self.cn = cname
-        self.df = pd.DataFrame(a,columns=[self.cn])
+        self.df = pd.DataFrame([a],columns=self.cn)
+    def scatter_plot(self,cn1,cn2,fname,fPath):
+
+        df = self.df
+        print(type(df[cn1][0]))
+        plt.figure(figsize=(15,15))
+        plt.scatter(df[cn1][0],df[cn2][0])
+        plt.show()
+
 
 if __name__ == "__main__":
     np.random.seed(1)
     aa = np.random.normal(0,2.0,1000)
-    pp = make_plots_1D(aa,"test")
-    pp.box_plot("test","../out_image")
-    pp.dist_plot("test","../out_image")
-    pp.hist_plot("test","../out_image")
-    pp.line_plot("test","../out_image","n")
+    np.random.seed(100)
+    bb = np.random.normal(0,2.0,1000)
+    np.random.seed(1000)
+    cc = np.random.normal(0,2.0,1000)
+    #print(pd.DataFrame([[aa,bb]]))
+    pp = make_plots_multi([aa,bb,cc],["test1","test2","test3"])
+    pp.scatter_plot("test1","test3","test","../out_image")
+    #pp = make_plots_1D(aa,"test")
+    #pp.box_plot("test","../out_image")
+    #pp.dist_plot("test","../out_image")
+    #pp.hist_plot("test","../out_image")
+    #pp.line_plot("test","../out_image","n")
